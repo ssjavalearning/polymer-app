@@ -69,21 +69,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <app-location
-        route="{{route}}"
-        url-space-regex="^[[rootPath]]">
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
-    <app-route
-        route="{{route}}"
-        pattern="[[rootPath]]:page"
-        data="{{routeData}}"
-        tail="{{subroute}}">
+    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
     <app-drawer-layout fullbleed narrow="{{narrow}}">
       <!-- Drawer content -->
-      <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+      <!-- <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="page1" href="[[rootPath]]page1">Poly One</a>
@@ -91,23 +85,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="page3" href="[[rootPath]]page3">Ing Three</a>
           <a name="view4" href="[[rootPath]]view4">View Four</a>
         </iron-selector>
-      </app-drawer>
+      </app-drawer> -->
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
-        <app-header slot="header" condenses reveals effects="waterfall">
+        <!-- <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>My App</div>
           </app-toolbar>
-        </app-header>
+        </app-header> -->
 
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <poly-page1 name="page1"></poly-page1>
           <hcl-page2 name="page2"></hcl-page2>
           <ing-page3 name="page3"></ing-page3>
@@ -168,13 +158,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           case 'page2': myPageName = 'hcl-page2.html'; break;
           case 'page3': myPageName = 'ing-page3.html'; break;
           default: myPageName = 'my-' + page + '.html'; break;
-       }
-       const resolvedPageUrl = this.resolveUrl(myPageName);
+        }
+        const resolvedPageUrl = this.resolveUrl(myPageName);
         Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
+          resolvedPageUrl,
+          null,
+          this._showPage404.bind(this),
+          true);
       }
 
       _showPage404() {
