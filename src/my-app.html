@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="hcl-page2.html">
 <link rel="lazy-import" href="ing-page3.html">
 <link rel="lazy-import" href="my-view4.html">
+<link rel="lazy-import" href="login.html">
 <link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
@@ -102,6 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <hcl-page2 name="page2"></hcl-page2>
           <ing-page3 name="page3"></ing-page3>
           <my-view4 name="view4"></my-view4>
+          <login-page name="login"></login-page>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
@@ -140,7 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
-        this.page = page || 'view4';
+        this.page = page || 'login';
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
@@ -157,6 +159,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           case 'page1': myPageName = 'poly-page1.html'; break;
           case 'page2': myPageName = 'hcl-page2.html'; break;
           case 'page3': myPageName = 'ing-page3.html'; break;
+          case 'login': myPageName = 'login.html'; break;
           default: myPageName = 'my-' + page + '.html'; break;
         }
         const resolvedPageUrl = this.resolveUrl(myPageName);
