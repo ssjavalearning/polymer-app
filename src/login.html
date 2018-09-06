@@ -7,9 +7,9 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/app-route/app-route.html"> 
 
 <dom-module id="login-page">
   <template>
@@ -22,18 +22,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">login</div>
       <h1>Login Page</h1>
       <div>UserName:<input type="text" name="username"><br/></div>
       <div>Password:<input type="password" name="password"><br/></div>
-      <div><input type="submit" value="Login"><br/></div>
+      <div><a name="dashboard" href="[[rootPath]]dashboard"><button type="button" class="login">Login</button></a></div>
     </div>
   </template>
 
   <script>
     class LoginPage extends Polymer.Element {
       static get is() { return 'login-page'; }
+
+      // static get properties() {
+      //   return {
+      //     rootPath: String
+      //   };
+      // }
+   
     }
+
+
+    
 
     window.customElements.define(LoginPage.is, LoginPage);
   </script>

@@ -11,35 +11,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="dashbaord-page">
+<dom-module id="create-ticket">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
+
         padding: 10px;
       }
 
-      button {
-        width: 300px;
+      .home-button {
+        text-align: right;
       }
     </style>
 
     <div class="card">
-      <h1>Dashboard Page</h1>
-
-      <div><a name="createTicket" href="[[rootPath]]createTicket"><button>Create My Ticket</button></a></div>
-      <div><a name="viewTicket" href="[[rootPath]]viewTicket"><button>View My Ticket</button></a></div>
-      <div><a name="approveTicket" href="[[rootPath]]approveTicket"><button>Approve Tickets</button></a></div>
-      <div><a name="details" href="[[rootPath]]details"><button>My Profile</button></a></div>
+      <div class="home-button"><a name="dashboard" href="[[rootPath]]dashboard"><button>Back</button></a></div>
+      <div class="circle">ct</div>
+      <h1>Create Ticket</h1>
 
     </div>
   </template>
 
   <script>
-    class DashBoardPage extends Polymer.Element {
-      static get is() { return 'dashbaord-page'; }
+    class CreateTicket extends Polymer.Element {
+      static get is() { return 'create-ticket'; }
     }
 
-    window.customElements.define(DashBoardPage.is, DashBoardPage);
+    window.customElements.define(CreateTicket.is, CreateTicket);
   </script>
 </dom-module>

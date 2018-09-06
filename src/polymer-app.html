@@ -27,9 +27,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="ing-page3.html">
 <link rel="lazy-import" href="my-view4.html">
 <link rel="lazy-import" href="login.html">
-<link rel="lazy-import" href="my-view404.html">
+<link rel="lazy-import" href="dashboard.html">
+<link rel="lazy-import" href="createTicket.html">
+<link rel="lazy-import" href="approveTicket.html">
+<link rel="lazy-import" href="viewTicket.html">
+<link rel="lazy-import" href="personalDetails.html">
+<link rel="lazy-import" href="error404.html">
 
-<dom-module id="my-app">
+<dom-module id="polymer-app">
   <template>
     <style>
       :host {
@@ -98,13 +103,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header> -->
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="error404" role="main">
           <poly-page1 name="page1"></poly-page1>
           <hcl-page2 name="page2"></hcl-page2>
           <ing-page3 name="page3"></ing-page3>
           <my-view4 name="view4"></my-view4>
           <login-page name="login"></login-page>
-          <my-view404 name="view404"></my-view404>
+          <dashbaord-page name="dashboard"></dashbaord-page>
+          <create-ticket name="createTicket"></create-ticket>
+          <approve-ticket name="approveTicket"></approve-ticket>
+          <view-ticket name="viewTicket"></view-ticket>
+          <personal-details name="details"></personal-details>
+          <error-page404 name="error404"></error-page404>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -115,8 +125,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // preventable, allowing for better scrolling performance.
     Polymer.setPassiveTouchGestures(true);
 
-    class MyApp extends Polymer.Element {
-      static get is() { return 'my-app'; }
+    class PolymerApp extends Polymer.Element {
+      static get is() { return 'polymer-app'; }
 
       static get properties() {
         return {
@@ -160,21 +170,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           case 'page2': myPageName = 'hcl-page2.html'; break;
           case 'page3': myPageName = 'ing-page3.html'; break;
           case 'login': myPageName = 'login.html'; break;
+          case 'dashboard': myPageName = 'dashboard.html'; break;
+          case 'createTicket': myPageName = 'createTicket.html'; break;
+          case 'approveTicket': myPageName = 'approveTicket.html'; break;
+          case 'viewTicket': myPageName = 'viewTicket.html'; break;
+          case 'details': myPageName = 'personalDetails.html'; break;
+          case 'error404' : myPageName = 'error404.html'; break;
           default: myPageName = 'my-' + page + '.html'; break;
         }
         const resolvedPageUrl = this.resolveUrl(myPageName);
         Polymer.importHref(
           resolvedPageUrl,
           null,
-          this._showPage404.bind(this),
+            this._errorPage404.bind(this),
           true);
       }
 
-      _showPage404() {
-        this.page = 'view404';
+      _errorPage404() {
+        this.page = 'error404';
       }
     }
 
-    window.customElements.define(MyApp.is, MyApp);
+    window.customElements.define(PolymerApp.is, PolymerApp);
   </script>
 </dom-module>
