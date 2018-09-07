@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
     <!-- Import the element to test -->
-    <link rel="import" href="../src/my-view1.html">
+    <link rel="import" href="../src/poly-page1.html">
   </head>
   <body>
     <test-fixture id="BasicView">
@@ -30,7 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </test-fixture>
 
     <script>
-      suite('my-view1 tests', function() {
+      suite('poly-page1 tests', function() {
         test('Number in circle should be 1', function() {
           var myView = fixture('BasicView');
           var circle = myView.shadowRoot.querySelector('.circle');
